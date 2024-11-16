@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome to Uninotes{% endblock %}
+
+{% block content %}
+<h1 class="my-4 text-center">Courses</h1>
+<div class="row">
+    {% for subject in subjects %}
+    <div class="col-md-4 mb-4">
+        <a href="{% url 'subject_detail' subject.id %}" class="text-decoration-none text-dark">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ subject.name }}</h5>
+                    <p class="card-text">{{ subject.description }}</p>
+                    <p class="card-text">
+                        <small class="text-muted">{{ subject.documents.count }} files available</small>
+                    </p>
+                    <span class="btn btn-primary">View Documents</span>
+                </div>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

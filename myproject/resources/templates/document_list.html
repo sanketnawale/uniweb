@@ -1,0 +1,6 @@
+<h1>Documents</h1>
+<ul>
+    {% for document in documents %}
+        <li>{{ document.title }} - <a href="{{ document.file_path }}">Download</a></li>
+    {% endfor %}
+</ul>

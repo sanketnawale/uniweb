@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ subject.name }}{% endblock %}
+
+{% block content %}
+<h1 class="my-4 text-center">{{ subject.name }}</h1>
+<p class="text-center">{{ subject.description }}</p>
+
+{% if documents %}
+    <h2 class="mt-4 text-center">Available Documents</h2>
+    <table class="table table-hover mt-3">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Download</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for document in documents %}
+            <tr>
+                <td>{{ document.title }}</td>
+                <td>
+                    <a href="{{ MEDIA_URL }}{{ document.file_path }}" class="btn btn-secondary btn-sm" download>Download</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p class="text-center">No documents available for this subject.</p>
+{% endif %}
+{% endblock %}
